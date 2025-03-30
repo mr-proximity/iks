@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konark Sundial</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .sundial-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+        .sundial {
+            width: 100%;
+            height: 100%;
+            background: url('sundial.png') no-repeat center;
+            background-size: cover;
+            position: absolute;
+        }
+        .shadow {
+            width: 100%;
+            height: 100%;
+            background: url('shadow.png') no-repeat center;
+            background-size: contain;
+            position: absolute;
+            transform-origin: 50% 50%;
+        }
+        .time-display {
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="sundial-container">
+        <img src="sundial.png" class="sundial">
+        <img src="shadow.png" class="shadow" id="shadow">
+        <div class="time-display" id="timeDisplay">Time: 12:00 PM</div>
+    </div>
+
+    <script>
+        const shadow = document.getElementById("shadow");
+        const timeDisplay = document.getElementById("timeDisplay");
+        let rotation = 0;
+        let isDragging = false;
+        let centerX, centerY, startAngle, initialRotation;
+
+        function getAngle(clientX, clientY) {
+            let dx = clientX - centerX;
+            let dy = clientY - centerY;
+            return Math.atan2(dy, dx) * (180 / Math.PI);
+        }
+
+        function updateTime(angle) {
+            let normalizedAngle = (angle + 360) % 360;
+            let timeMap = {
+                0: "12:00 PM", 45: "9:00 PM", 90: "6:00 PM", 135: "3:00 PM", 
+                180: "12:00 AM", 225: "9:00 AM", 270: "6:00 AM", 315: "3:00 AM"
+            };
+            
+            if (timeMap.hasOwnProperty(normalizedAngle)) {
+                timeDisplay.textContent = `Time: ${timeMap[normalizedAngle]}`;
+                return;
+            }
+            
+            let sortedAngles = Object.keys(timeMap).map(Number).sort((a, b) => a - b);
+            let prevAngle = sortedAngles.reduce((prev, curr) => (curr <= normalizedAngle ? curr : prev), sortedAngles[0]);
+            let nextAngle = sortedAngles.find((angle) => angle > normalizedAngle) || sortedAngles[0];
+            
+            let prevTime = timeMap[prevAngle].split(/[: ]/);
+            let nextTime = timeMap[nextAngle].split(/[: ]/);
+            
+            let prevHour = parseInt(prevTime[0]) % 12 + (prevTime[2] === "PM" ? 12 : 0);
+            let nextHour = parseInt(nextTime[0]) % 12 + (nextTime[2] === "PM" ? 12 : 0);
+            
+            if (nextHour < prevHour) nextHour += 12;
+            
+            let fraction = (normalizedAngle - prevAngle) / (nextAngle - prevAngle || 360);
+            let interpolatedHour = prevHour + fraction * (nextHour - prevHour);
+            
+            let finalHour = Math.floor(interpolatedHour) % 12 || 12;
+            let finalMinutes = Math.round((interpolatedHour % 1) * 60);
+            let period = interpolatedHour >= 12 && interpolatedHour < 24 ? "PM" : "AM";
+            
+            timeDisplay.textContent = `Time: ${finalHour}:${finalMinutes.toString().padStart(2, '0')} ${period}`;
+        }
+
+        shadow.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            const rect = shadow.getBoundingClientRect();
+            centerX = rect.left + rect.width / 2;
+            centerY = rect.top + rect.height / 2;
+            startAngle = getAngle(e.clientX, e.clientY);
+            initialRotation = rotation;
+        });
+
+        window.addEventListener("mousemove", (e) => {
+            if (isDragging) {
+                let currentAngle = getAngle(e.clientX, e.clientY);
+                let deltaAngle = currentAngle - startAngle;
+                if (deltaAngle > 180) deltaAngle -= 360;
+                if (deltaAngle < -180) deltaAngle += 360;
+                rotation = (initialRotation + deltaAngle) % 360;
+                if (rotation < 0) rotation += 360;
+                shadow.style.transform = `rotate(${rotation}deg)`;
+                updateTime(rotation);
+            }
+        });
+
+        window.addEventListener("mouseup", () => {
+            isDragging = false;
+        });
+    </script>
+</body>
+</html>

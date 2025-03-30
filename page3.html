@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Indian Engineering Wonders</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('paper.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 30px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Palatino Linotype', 'Book Antiqua', serif;
+            color: #4b2e83;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 30px;
+            border-bottom: 2px solid #4b2e83;
+            padding-bottom: 10px;
+            text-align: left;
+        }
+
+        p {
+            font-size: 1.1rem;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        /* Image Styles */
+        .main-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border: 5px solid #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Slideshow Styles */
+        .slideshow-container {
+            position: relative;
+            max-width: 800px;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            border: 5px solid #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .slide-controls {
+            margin-top: 15px;
+            font-style: italic;
+            color: #4b2e83;
+        }
+
+        /* Navigation Buttons */
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            background-color: #4b2e83;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Palatino Linotype', 'Book Antiqua', serif;
+            transition: background-color 0.3s;
+        }
+
+        .nav-button:hover {
+            background-color: #3a2366;
+        }
+
+        /* Sundial Styles */
+        .sundial-section {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 5px;
+            margin-top: 40px;
+        }
+
+        .sundial-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+        }
+
+        .sundial {
+            width: 100%;
+            height: 100%;
+            background: url('sundial.png') no-repeat center;
+            background-size: cover;
+            position: absolute;
+        }
+
+        .shadow {
+            width: 100%;
+            height: 100%;
+            background: url('shadow.png') no-repeat center;
+            background-size: contain;
+            position: absolute;
+            transform-origin: 50% 50%;
+        }
+
+        .time-display {
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Palatino Linotype', 'Book Antiqua', serif;
+            color: #4b2e83;
+        }
+
+        .sundial-instruction {
+            text-align: center;
+            font-style: italic;
+            color: #4b2e83;
+            margin-top: 50px;
+        }
+
+        /* Video Styles */
+        .video-container {
+            max-width: 800px;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .video-container video {
+            width: 100%;
+            max-height: 500px;
+            border: 5px solid #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            .content-box {
+                padding: 20px;
+            }
+
+            .sundial-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .time-display {
+                font-size: 18px;
+                bottom: -35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .nav-button {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+
+            .sundial-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .time-display {
+                font-size: 16px;
+                bottom: -30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-box">
+            <h1>Ancient Indian Engineering Wonders</h1>
+            <h2>Marvels of Mechanical and Structural Ingenuity</h2>
+            
+            <h3>Kailasa Temple (Ellora, Maharashtra) – The Monolithic Wonder</h3>
+            
+            <img src="kailasa.png" alt="Kailasa Temple at Ellora" class="main-image">
+            
+            <p>The Kailasa Temple at Ellora, carved from a single rock, is one of the most ambitious engineering feats of ancient India.</p>
+            
+            <h3>Engineering Significance:</h3>
+            
+            <p><strong>Monolithic Excavation:</strong> Unlike conventional construction, the temple was carved from the top down, requiring meticulous planning and execution.</p>
+            
+            <p><strong>Geometric Precision:</strong> The temple follows precise geometric ratios, ensuring structural stability.</p>
+            
+            <p><strong>Use of Ancient Tools:</strong> Evidence suggests the use of iron chisels and hammers, demonstrating mastery in rock-cutting techniques.</p>
+            
+            <p>The Kailasa Temple remains an unparalleled example of rock-cut engineering, leaving modern architects in awe.</p>
+            
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <img src="k1.png" alt="Kailasa Temple Image 1" class="slide-image">
+                    <div class="slide-controls">Click to view next image</div>
+                </div>
+                <div class="slide">
+                    <img src="k2.png" alt="Kailasa Temple Image 2" class="slide-image">
+                    <div class="slide-controls">Click to view next image</div>
+                </div>
+                <div class="slide">
+                    <img src="k3.png" alt="Kailasa Temple Image 3" class="slide-image">
+                    <div class="slide-controls">Click to view next image</div>
+                </div>
+                <div class="slide">
+                    <img src="k4.png" alt="Kailasa Temple Image 4" class="slide-image">
+                    <div class="slide-controls">Click to view next image</div>
+                </div>
+                <div class="slide">
+                    <img src="k5.png" alt="Kailasa Temple Image 5" class="slide-image">
+                    <div class="slide-controls">Click to view next image</div>
+                </div>
+                <div class="slide">
+                    <img src="k6.png" alt="Kailasa Temple Image 6" class="slide-image">
+                    <div class="slide-controls">Click to view next image</div>
+                </div>
+                <div class="slide">
+                    <img src="k7.png" alt="Kailasa Temple Image 7" class="slide-image">
+                    <div class="slide-controls">Click to view next image</div>
+                </div>
+                <div class="slide">
+                    <img src="k8.png" alt="Kailasa Temple Image 8" class="slide-image">
+                    <div class="slide-controls">End of slideshow</div>
+                </div>
+            </div>
+            
+            <h3>Konark Sun Temple (Odisha) – The Giant Chariot</h3>
+            
+            <img src="konark.jpg" alt="Konark Sun Temple" class="main-image">
+            
+            <p>The Konark Sun Temple, built in the 13th century, represents a massive chariot of the Sun God, Surya, featuring 24 intricately carved wheels.</p>
+            
+            <h3>Engineering Significance:</h3>
+            
+            <p><strong>Astronomical Alignment:</strong> The wheels function as sundials, accurately measuring time through the movement of shadows.</p>
+            
+            <p><strong>Magnetized Core:</strong> Legends suggest that an iron rod inside the temple was magnetized, helping balance the structure.</p>
+            
+            <p><strong>Granite Construction Without Mortar:</strong> The temple was built using interlocking granite blocks, ensuring stability without binding agents.</p>
+            
+            <p>Konark's Sun Temple is an outstanding example of astronomical precision and structural ingenuity in ancient Indian architecture.</p>
+            
+            <h3>Working of the Sundial at Konark Sun Temple</h3>
+            
+            <p>The Konark Sun Temple in Odisha, India, is not just an architectural marvel but also an astronomical wonder. One of its most fascinating features is the stone sundial on its wheels, which accurately tells the time based on the position of the sun.</p>
+            
+            <h3>Structure of the Sundial</h3>
+            
+            <p>The temple is designed like a massive chariot of the Sun God, Surya, with 24 elaborately carved stone wheels (12 on each side). These wheels function as sundials and can tell the time precisely.</p>
+            
+            <p>Each wheel has 8 major spokes and 8 minor spokes, dividing the day into eight equal parts, similar to modern timekeeping. The beads carved between the spokes act as minute markers for more precise time readings.</p>
+            
+            <h3>How It Works</h3>
+            
+            <p>The sunlight casts a shadow on the wheels, and by observing the position of the shadow, one can determine the time.</p>
+            
+            <p>Each major spoke represents an hour, while the minor divisions allow for a more detailed reading.</p>
+            
+            <p>By carefully noting where the shadow falls on the spokes and beads, one can estimate time to an accuracy of about 3 minutes.</p>
+            
+            <p>The morning sun helps track time on the eastern side, while the afternoon sun is used for the western side.</p>
+            
+            <div class="sundial-section">
+                <div class="sundial-container">
+                    <img src="sundial.png" class="sundial">
+                    <img src="shadow.png" class="shadow" id="shadow">
+                    <div class="time-display" id="timeDisplay">Time: 12:00 PM</div>
+                </div>
+                <div class="sundial-instruction">Drag shadow to see time</div>
+            </div>
+            
+            <h3>Rani Ki Vav (Gujarat) – The Stepwell with Hidden Water Filtration</h3>
+            
+            <img src="rani.jpg" alt="Rani Ki Vav" class="main-image">
+            
+            <p>Rani Ki Vav, a stepwell in Patan, Gujarat, built during the 11th century, showcases intricate carvings and advanced water conservation techniques.</p>
+            
+            <h3>Engineering Significance:</h3>
+            
+            <p><strong>Multi-Level Water Storage:</strong> The stepwell's seven levels allow efficient water collection and conservation, crucial for arid regions.</p>
+            
+            <p><strong>Hidden Filtration System:</strong> The design incorporates natural filtration through sand and stone layers, purifying water as it percolates.</p>
+            
+            <p><strong>Structural Integrity:</strong> The well's deep foundation ensures stability even during seasonal fluctuations in groundwater levels.</p>
+            
+            <p>Rani Ki Vav is a perfect blend of aesthetics and functionality, highlighting India's early expertise in hydraulic engineering.</p>
+            
+            <img src="rani.png" alt="Rani Ki Vav detailed view" class="main-image">
+            
+            <h3>Iron Pillar of Delhi – 1,600 Years Without Rust</h3>
+            
+            <img src="iron.jpg" alt="Iron Pillar of Delhi" class="main-image">
+            
+            <p>Standing in the Qutub Complex, the Iron Pillar of Delhi has baffled scientists and engineers with its rust-resistant composition, surviving for over 1,600 years.</p>
+            
+            <h3>Engineering Significance:</h3>
+            
+            <p><strong>Corrosion-Resistant Metal:</strong> The pillar is composed of 98% wrought iron with a unique phosphorus coating that prevents rusting.</p>
+            
+            <p><strong>Forge Welding Technique:</strong> Ancient Indian blacksmiths used high-temperature forge welding to achieve seamless construction.</p>
+            
+            <p><strong>Weather Resistance:</strong> Despite exposure to rain and humidity, the iron pillar remains intact, demonstrating superior metallurgical expertise.</p>
+            
+            <p>The Iron Pillar is a remarkable example of ancient India's pioneering advancements in metallurgy.</p>
+            
+            <h3>Brihadeeswara Temple (Tamil Nadu) – The Towering Marvel</h3>
+            
+            <img src="brih.png" alt="Brihadeeswara Temple" class="main-image">
+            
+            <p>The Brihadeeswara Temple, built by Raja Raja Chola I in the 11th century, is a UNESCO World Heritage Site known for its towering vimana (temple tower) and mysterious 'floating dome.'</p>
+            
+            <h3>Engineering Significance:</h3>
+            
+            <p><strong>Monolithic Dome Placement:</strong> The 80-ton capstone atop the temple was placed using an inclined ramp that stretched over 6 kilometers, showcasing advanced pulley and lever mechanics.</p>
+            
+            <p><strong>Precision in Stone Cutting:</strong> The granite blocks, transported from distant quarries, were cut with such precision that they remain interlocked without any binding material.</p>
+            
+            <p><strong>Symmetrical Load Distribution:</strong> The temple's design ensures that its weight is evenly distributed, allowing it to stand firm for over a thousand years.</p>
+            
+            <p>The Brihadeeswara Temple is a testament to the Chola dynasty's engineering brilliance and architectural grandeur.</p>
+            
+            <h3>How the Dome of Brihadeeswarar Temple Was Placed</h3>
+            
+            <p>The Brihadeeswarar Temple, also known as the Periya Kovil, in Thanjavur, Tamil Nadu, is an architectural wonder built by Raja Raja Chola I in the 11th century. One of its most fascinating engineering feats is the placement of its massive dome (kalasha) atop the towering Vimana (sanctum tower), which stands at 66 meters (216 feet)—one of the tallest temple towers in the world.</p>
+            
+            <h3>The Dome: A Single Stone Structure</h3>
+            
+            <p>The temple's dome is a massive granite capstone, often called the Shikhara or Vimana crown, weighing approximately 80 tons.</p>
+            
+            <p>The challenge was to lift and place this enormous stone at the very top of the Vimana without modern cranes or lifting machinery.</p>
+            
+            <h3>Ingenious Ramp Technique</h3>
+            
+            <p>To achieve this feat, the Cholas used an ancient technique called the inclined plane method:</p>
+            
+            <p><strong>Constructing a Ramp:</strong></p>
+            <p>A gradual, winding ramp was built from the temple site to a distance of about 6 kilometers at an angle.</p>
+            <p>The ramp extended from the ground level to the top of the Vimana, making it possible to drag the massive stone using rollers and manpower.</p>
+            
+            <p><strong>Transporting the Dome:</strong></p>
+            <p>Elephants, oxen, and thousands of workers pulled the stone up the ramp.</p>
+            <p>The stone was placed on wooden rollers and pulled using strong ropes and wooden beams.</p>
+            
+            <p><strong>Final Placement:</strong></p>
+            <p>After days of effort, the stone was positioned precisely at the peak of the tower.</p>
+            <p>Once in place, the ramp was dismantled, leaving behind only the perfectly aligned temple structure that we see today.</p>
+            
+            <div class="video-container">
+                <video autoplay loop muted>
+                    <source src="Brihadeshwara.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <div class="page-nav">
+                <a href="page2.html" class="nav-button">Previous Page</a>
+                <a href="page4.html" class="nav-button">Next Page</a>
+            </div>
+        </div>
+    </div>
+
+    <audio id="pickaxeSound" src="pickaxe.mp3"></audio>
+
+    <script>
+        // Kailasa Temple Slideshow
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const slideImages = document.querySelectorAll('.slide-image');
+            const pickaxeSound = document.getElementById('pickaxeSound');
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+            }
+            
+            slideImages.forEach((image, index) => {
+                image.addEventListener('click', function() {
+                    if (currentSlide < totalSlides - 1) {
+                        pickaxeSound.currentTime = 0;
+                        pickaxeSound.play();
+                        currentSlide++;
+                        showSlide(currentSlide);
+                    }
+                });
+            });
+            
+            showSlide(0);
+        });
+
+        // Konark Sundial Interactive
+        const shadow = document.getElementById("shadow");
+        const timeDisplay = document.getElementById("timeDisplay");
+        let rotation = 0;
+        let isDragging = false;
+        let centerX, centerY, startAngle, initialRotation;
+
+        function getAngle(clientX, clientY) {
+            let dx = clientX - centerX;
+            let dy = clientY - centerY;
+            return Math.atan2(dy, dx) * (180 / Math.PI);
+        }
+
+        function updateTime(angle) {
+            let normalizedAngle = (angle + 360) % 360;
+            let timeMap = {
+                0: "12:00 PM", 45: "9:00 PM", 90: "6:00 PM", 135: "3:00 PM", 
+                180: "12:00 AM", 225: "9:00 AM", 270: "6:00 AM", 315: "3:00 AM"
+            };
+            
+            if (timeMap.hasOwnProperty(normalizedAngle)) {
+                timeDisplay.textContent = `Time: ${timeMap[normalizedAngle]}`;
+                return;
+            }
+            
+            let sortedAngles = Object.keys(timeMap).map(Number).sort((a, b) => a - b);
+            let prevAngle = sortedAngles.reduce((prev, curr) => (curr <= normalizedAngle ? curr : prev), sortedAngles[0]);
+            let nextAngle = sortedAngles.find((angle) => angle > normalizedAngle) || sortedAngles[0];
+            
+            let prevTime = timeMap[prevAngle].split(/[: ]/);
+            let nextTime = timeMap[nextAngle].split(/[: ]/);
+            
+            let prevHour = parseInt(prevTime[0]) % 12 + (prevTime[2] === "PM" ? 12 : 0);
+            let nextHour = parseInt(nextTime[0]) % 12 + (nextTime[2] === "PM" ? 12 : 0);
+            
+            if (nextHour < prevHour) nextHour += 12;
+            
+            let fraction = (normalizedAngle - prevAngle) / (nextAngle - prevAngle || 360);
+            let interpolatedHour = prevHour + fraction * (nextHour - prevHour);
+            
+            let finalHour = Math.floor(interpolatedHour) % 12 || 12;
+            let finalMinutes = Math.round((interpolatedHour % 1) * 60);
+            let period = interpolatedHour >= 12 && interpolatedHour < 24 ? "PM" : "AM";
+            
+            timeDisplay.textContent = `Time: ${finalHour}:${finalMinutes.toString().padStart(2, '0')} ${period}`;
+        }
+
+        shadow.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            const rect = shadow.getBoundingClientRect();
+            centerX = rect.left + rect.width / 2;
+            centerY = rect.top + rect.height / 2;
+            startAngle = getAngle(e.clientX, e.clientY);
+            initialRotation = rotation;
+        });
+
+        window.addEventListener("mousemove", (e) => {
+            if (isDragging) {
+                let currentAngle = getAngle(e.clientX, e.clientY);
+                let deltaAngle = currentAngle - startAngle;
+                if (deltaAngle > 180) deltaAngle -= 360;
+                if (deltaAngle < -180) deltaAngle += 360;
+                rotation = (initialRotation + deltaAngle) % 360;
+                if (rotation < 0) rotation += 360;
+                shadow.style.transform = `rotate(${rotation}deg)`;
+                updateTime(rotation);
+            }
+        });
+
+        window.addEventListener("mouseup", () => {
+            isDragging = false;
+        });
+    </script>
+</body>
+</html>

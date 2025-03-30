@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Indian Shipbuilding Techniques</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-image: url('mech.png');
+            background-size: cover;
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.5);
+            min-height: 100vh;
+            padding: 30px;
+        }
+        
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Cinzel Decorative', serif;
+            color: #1a2a4a;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            text-align: center;
+            border-bottom: 2px solid #1a2a4a;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 40px;
+            border-left: 5px solid #1a2a4a;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 30px;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .img-left {
+            float: left;
+            margin-right: 30px;
+            max-width: 45%;
+        }
+        
+        .img-right {
+            float: right;
+            margin-left: 30px;
+            max-width: 45%;
+        }
+        
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        .quiz-btn {
+            display: block;
+            width: 200px;
+            margin: 40px auto;
+            padding: 15px;
+            background-color: #1a2a4a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quiz-btn:hover {
+            background-color: #2a3a6a;
+            transform: scale(1.05);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        
+        .nav-btn {
+            padding: 12px 25px;
+            background-color: #1a2a4a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background-color: #2a3a6a;
+        }
+        
+        /* Quiz Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .modal-content {
+            background-color: #f4f4f4;
+            margin: 10% auto;
+            padding: 30px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            color: #aaa;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #333;
+        }
+        
+        .quiz-question {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        
+        .quiz-option {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            background-color: #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quiz-option {
+        display: block;
+        margin: 10px 0;
+        padding: 12px;
+        background-color: #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    /* Remove the hover effect */
+    /* .quiz-option:hover {
+        background-color: #ccc;
+    } */
+    
+    .correct {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    .incorrect {
+        background-color: #f44336;
+        color: white;
+    }
+    
+        
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .quiz-nav-btn {
+            padding: 10px 20px;
+            background-color: #1a2a4a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cinzel Decorative', serif;
+        }
+        
+        .quiz-nav-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .quiz-progress {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+            
+            .img-left, .img-right {
+                float: none;
+                margin: 20px auto;
+                max-width: 100%;
+            }
+            
+            .modal-content {
+                width: 90%;
+                margin: 20% auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .overlay {
+                padding: 15px;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            .quiz-btn, .nav-btn {
+                padding: 10px 15px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="content">
+            <h1>Shipbuilding Techniques in Ancient India: Engineering Mastery of the Seas</h1>
+            
+            <img src="shup.png" alt="Ancient Indian Ship">
+            
+            <h2>Introduction: The Maritime Prowess of Ancient India</h2>
+            <p>India has a long and rich history of shipbuilding, with evidence dating back to the Indus Valley Civilization (~2300 BCE). Indian shipbuilders developed highly advanced techniques that enabled long-distance trade and naval supremacy. Ancient texts such as the Arthashastra (3rd century BCE) and Yuktikalpataru (10th century CE) by King Bhoja provide detailed descriptions of ship design, materials, and navigation techniques.</p>
+            <p>From the vast dockyard of Lothal to the formidable Chola navy and the maritime power of the Marathas, India's shipbuilding legacy influenced global trade and naval strategies for centuries.</p>
+            
+            <h2>Key Shipbuilding Techniques in Ancient India</h2>
+            
+            <img src="teak.jpeg" alt="Teakwood" class="img-left">
+            
+            <h3>1. Use of Teakwood: The Perfect Shipbuilding Material</h3>
+            <p>Ancient Indian ships were primarily built using teakwood, a superior choice due to its:</p>
+            <ul>
+                <li>High oil content, making it resistant to saltwater damage.</li>
+                <li>Natural decay resistance, preventing rot even after years at sea.</li>
+                <li>Exceptional durability, allowing ships to withstand storms and long voyages.</li>
+            </ul>
+            <p>Teakwood ships lasted for decades, making Indian vessels some of the sturdiest of their time.</p>
+            
+            <div class="clearfix"></div>
+            
+            <img src="mortise.jpeg" alt="Mortise and Tenon Joints" class="img-right">
+            
+            <h3>2. Advanced Joinery Techniques: Mortise and Tenon Joints</h3>
+            <p>Instead of using metal nails, which corrode in seawater, Indian shipbuilders employed:</p>
+            <ul>
+                <li>Mortise and Tenon Joints, where wooden planks were interlocked for extra strength.</li>
+                <li>Natural Resin Caulking, using plant-based resins and coconut fibers to waterproof the joints.</li>
+                <li>Flexibility in Rough Seas, as the absence of nails prevented structural weakening.</li>
+            </ul>
+            <p>This method ensured ships were strong, leak-proof, and long-lasting.</p>
+            
+            <div class="clearfix"></div>
+            
+            <h3>3. Multi-Decked Ships: Engineering for Cargo and Warfare</h3>
+            <p>Indian shipbuilders designed multi-decked vessels called Navadhanis, which were used for:</p>
+            <ul>
+                <li>Passenger Transport – Large ships could accommodate travelers on multiple levels.</li>
+                <li>Cargo Shipping – Merchant ships transported spices, textiles, and gemstones.</li>
+                <li>Naval Warfare – Warships were equipped with defensive structures, archery towers, and ramming prows.</li>
+                <li>Animal Transport – Some large ships even carried elephants for military campaigns.</li>
+            </ul>
+            <p>Multi-decked ships enhanced India's naval and commercial dominance.</p>
+            
+            <h3>4. Compartmentalized Hulls: Preventing Shipwrecks</h3>
+            <div class="clearfix">
+                <img src="hull.png" alt="Compartmentalized Hulls" class="img-right">
+                <p>Indian shipbuilders introduced compartmentalized hulls, similar to modern bulkheads, which:</p>
+                <ul>
+                    <li>Contained water-tight sections, preventing total flooding if a hull was breached.</li>
+                    <li>Improved ship stability, ensuring the vessel remained afloat even after damage.</li>
+                    <li>Allowed controlled cargo storage, balancing the ship's weight distribution.</li>
+                </ul>
+                <p>This innovation significantly reduced the risk of sinking, making Indian ships safer and more efficient.</p>
+            </div>
+            
+            <div class="clearfix"></div>
+            
+            <h3>5. Iron-Clad Ships: Protection Against Marine Borers</h3>
+            <p>Ancient texts mention iron sheathing on wooden ships to:</p>
+            <ul>
+                <li>Protect against marine organisms, such as shipworms that weaken hulls.</li>
+                <li>Strengthen the structure, making ships more resilient in battle and long voyages.</li>
+                <li>Improve durability, ensuring ships lasted longer without repairs.</li>
+            </ul>
+            <p>This early innovation in ship reinforcement foreshadowed modern ship armor.</p>
+            
+            <h3>6. Advanced Navigation Techniques: Celestial & Instrument-Based Sailing</h3>
+            <p>Indian sailors mastered celestial navigation, using:</p>
+            <ul>
+                <li>Star positions to determine latitude and direction.</li>
+                <li>The Sun and Moon to track time and seasonal changes.</li>
+                <li>The Sanku (Gnomon), a device used to measure latitude by observing the Sun's shadow.</li>
+            </ul>
+            
+            <img src="gnomon.jpg" alt="Sanku (Gnomon)">
+            
+            <p>These techniques allowed Indian sailors to travel vast distances across the Indian Ocean without getting lost.</p>
+            
+            <h2>Role of Ancient Indian Shipbuilding in Global Trade</h2>
+            
+            <h3>1. Maritime Trade with Southeast Asia</h3>
+            <p>India had extensive trade networks with Indonesia, Cambodia, Vietnam, and China, exporting:</p>
+            <ul>
+                <li>Spices such as black pepper and cardamom.</li>
+                <li>Fine textiles, including silk and cotton.</li>
+                <li>Precious metals and gemstones.</li>
+            </ul>
+            <p>Indian merchants and shipbuilders contributed to the cultural and economic growth of Southeast Asia.</p>
+            
+            <h3>2. Roman and Middle Eastern Connections</h3>
+            <p>Indian-built ships played a crucial role in trade with:</p>
+            <ul>
+                <li>The Roman Empire, exporting silk, ivory, and spices via the Red Sea.</li>
+                <li>The Arabian Peninsula, trading in incense, pearls, and horses.</li>
+                <li>East Africa, engaging in commerce through coastal trade routes.</li>
+            </ul>
+            <p>The influence of Indian maritime engineering extended beyond Asia, shaping global trade.</p>
+            
+            <h3>3. Influence on Other Shipbuilding Traditions</h3>
+            <p>Ancient Indian shipbuilding inspired naval architectures worldwide, including:</p>
+            
+            <img src="junk.jpeg" alt="Chinese Junk" class="img-left">
+            <p>The Chinese Junk, which shares similarities with Indian ocean-faring vessels.</p>
+            
+            <div class="clearfix"></div>
+            
+            <img src="dhow.jpeg" alt="Arab Dhow" class="img-right">
+            <p>The Arab Dhow, believed to have adapted Indian hull designs and joinery methods.</p>
+            
+            <div class="clearfix"></div>
+            
+            <p>European Shipbuilding, where some Indian materials (like teakwood) were later used in colonial-era ship construction.</p>
+            <p>India's shipbuilding legacy contributed to the development of global maritime technologies.</p>
+            
+            <button class="quiz-btn" id="quizBtn">Take Quiz</button>
+            
+            <div class="nav-buttons">
+                <a href="page3.html" class="nav-btn">Previous Page</a>
+                <a href="page5.html" class="nav-btn">Next Page</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Ancient Indian Shipbuilding Quiz</h2>
+            
+            <div class="quiz-progress" id="quizProgress">Question 1 of 5</div>
+            
+            <div id="questionContainer">
+                <!-- Questions will be inserted here by JavaScript -->
+            </div>
+            
+            <div class="quiz-navigation">
+                <button class="quiz-nav-btn" id="prevBtn" disabled>Previous</button>
+                <button class="quiz-nav-btn" id="nextBtn">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Quiz data
+        const quizData = [
+            {
+                question: "1. What was the primary wood used in ancient Indian shipbuilding?",
+                options: ["A) Oak", "B) Teak", "C) Pine", "D) Bamboo"],
+                correct: 1
+            },
+            {
+                question: "2. What joinery technique did Indian shipbuilders use instead of metal nails?",
+                options: ["A) Dovetail joints", "B) Mortise and tenon joints", "C) Lap joints", "D) Butt joints"],
+                correct: 1
+            },
+            {
+                question: "3. What innovation helped prevent total flooding if the hull was breached?",
+                options: ["A) Double hulls", "B) Outriggers", "C) Compartmentalized hulls", "D) Bamboo reinforcements"],
+                correct: 2
+            },
+            {
+                question: "4. What device did Indian sailors use to measure latitude?",
+                options: ["A) Astrolabe", "B) Sextant", "C) Sanku (Gnomon)", "D) Compass"],
+                correct: 2
+            },
+            {
+                question: "5. Which ancient Indian text describes shipbuilding techniques?",
+                options: ["A) Vedas", "B) Mahabharata", "C) Yuktikalpataru", "D) Puranas"],
+                correct: 2
+            }
+        ];
+
+        // Quiz state
+        let currentQuestion = 0;
+        let selectedAnswers = Array(quizData.length).fill(null);
+        
+        // Get DOM elements
+        const modal = document.getElementById("quizModal");
+        const btn = document.getElementById("quizBtn");
+        const span = document.getElementsByClassName("close")[0];
+        const questionContainer = document.getElementById("questionContainer");
+        const quizProgress = document.getElementById("quizProgress");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        
+        // Open modal when button is clicked
+        btn.onclick = function() {
+            modal.style.display = "block";
+            loadQuestion();
+        }
+        
+        // Close modal when X is clicked
+        span.onclick = function() {
+            modal.style.display = "none";
+            resetQuiz();
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                resetQuiz();
+            }
+        }
+        
+        // Load a question
+        function loadQuestion() {
+            const question = quizData[currentQuestion];
+            quizProgress.textContent = `Question ${currentQuestion + 1} of ${quizData.length}`;
+            
+            let optionsHTML = '';
+            question.options.forEach((option, index) => {
+                const isSelected = selectedAnswers[currentQuestion] === index;
+                const isCorrect = index === question.correct;
+                let optionClass = 'quiz-option';
+                
+                if (selectedAnswers[currentQuestion] !== null) {
+                    if (isSelected && isCorrect) {
+                        optionClass += ' correct';
+                    } else if (isSelected && !isCorrect) {
+                        optionClass += ' incorrect';
+                    } else if (!isSelected && isCorrect) {
+                        optionClass += ' correct';
+                    }
+                }
+                
+                optionsHTML += `
+                    <div class="${optionClass}" onclick="selectAnswer(${index})">
+                        ${option}
+                    </div>
+                `;
+            });
+            
+            questionContainer.innerHTML = `
+                <div class="quiz-question">${question.question}</div>
+                ${optionsHTML}
+            `;
+            
+            // Update navigation buttons
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Finish' : 'Next';
+        }
+        
+        // Select an answer
+        function selectAnswer(index) {
+            if (selectedAnswers[currentQuestion] === null) {
+                selectedAnswers[currentQuestion] = index;
+                loadQuestion();
+            }
+        }
+        
+        // Previous question
+        prevBtn.onclick = function() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        }
+        
+        // Next question
+        nextBtn.onclick = function() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                modal.style.display = "none";
+                resetQuiz();
+            }
+        }
+        
+        // Reset quiz
+        function resetQuiz() {
+            currentQuestion = 0;
+            selectedAnswers = Array(quizData.length).fill(null);
+        }
+        
+        // Make functions available globally
+        window.checkAnswer = selectAnswer;
+        window.selectAnswer = selectAnswer;
+    </script>
+</body>
+</html>

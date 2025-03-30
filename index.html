@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wood Background with Land Overlay</title>
+    <style>
+        /* Reset default margins and padding */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        /* Container for the background and overlay */
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        
+        /* Wood background styling */
+        .wood-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('wood.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+        
+        /* Land overlay styling - Enlarged by 20% + Shadow */
+        .land-overlay {
+            position: absolute;
+            background-image: url('land.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 2;
+            
+            /* Enlarged by 20% (adjust as needed) */
+            width: 90%;  /* Increased from 80% */
+            height: 70%;  /* Increased from 60% */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+            /* Subtle shadow effect */
+            filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3));
+        }
+        
+        /* Next Page Button (Bottom Right) */
+        .next-page-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #5c3a21; /* Wood-like color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 3;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+        
+        .next-page-btn:hover {
+            background-color: #7a4f2d; /* Darker on hover */
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .land-overlay {
+                width: 100%;  /* Adjusted for mobile */
+                height: 60%; /* Adjusted for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="wood-background"></div>
+        <div class="land-overlay"></div>
+        <button class="next-page-btn" onclick="window.location.href='page2.html'">Next Page →</button>
+    </div>
+
+    <script>
+        // JavaScript to handle additional responsiveness if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            function adjustLayout() {
+                const screenWidth = window.innerWidth;
+                const screenHeight = window.innerHeight;
+                
+                // Adjust land overlay based on orientation
+                if (screenWidth < screenHeight) {
+                    // Portrait mode (mobile)
+                    document.querySelector('.land-overlay').style.width = '100%';
+                    document.querySelector('.land-overlay').style.height = '60%';
+                } else {
+                    // Landscape mode (desktop/tablet)
+                    document.querySelector('.land-overlay').style.width = '90%';
+                    document.querySelector('.land-overlay').style.height = '70%';
+                }
+            }
+            
+            // Initial adjustment
+            adjustLayout();
+            
+            // Adjust on window resize
+            window.addEventListener('resize', adjustLayout);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Indian Metallurgy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cinzel', serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('old.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+            font-size: 18px; /* Increased base font size */
+            font-weight: 500; /* Medium weight for better readability */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cinzel Decorative', serif;
+            color: #5a2c02;
+        }
+
+        h1 {
+            font-size: 2.8rem; /* Slightly larger */
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #5a2c02;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2.2rem; /* Slightly larger */
+            margin-top: 40px;
+            border-bottom: 1px solid #5a2c02;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 1.7rem; /* Slightly larger */
+            margin-top: 30px;
+        }
+
+        p, li {
+            font-size: 1.1rem; /* Larger paragraph text */
+            font-weight: 500; /* Bolder text */
+            margin-bottom: 1em;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .img-left {
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            max-width: 40%;
+        }
+
+        .img-right {
+            float: right;
+            margin-left: 20px;
+            margin-bottom: 20px;
+            max-width: 40%;
+        }
+
+        .img-center {
+            display: block;
+            margin: 20px auto;
+            max-width: 70%;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .quiz-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 12px 20px;
+            background-color: #5a2c02;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .quiz-btn:hover {
+            background-color: #7a3c02;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: rgba(255, 255, 255, 0.9);
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: black;
+        }
+
+        .quiz-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1rem; /* Larger quiz options */
+            font-weight: 500; /* Bolder quiz options */
+        }
+
+        .quiz-option:hover {
+            background-color: #e9e9e9;
+        }
+
+        .correct {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .incorrect {
+            background-color: #f44336;
+            color: white;
+            border-color: #f44336;
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .quiz-nav-btn {
+            padding: 8px 16px;
+            background-color: #5a2c02;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+        }
+
+        .quiz-nav-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .quiz-title {
+            text-align: center;
+            font-family: 'Cinzel Decorative', serif;
+            color: #5a2c02;
+            margin-bottom: 20px;
+        }
+
+        .item-name {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: none;
+            font-size: 1.2rem; /* Larger item names */
+        }
+
+        .nav-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #5a2c02;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Cinzel', serif;
+            transition: background-color 0.3s;
+            font-size: 1.1rem; /* Larger nav button */
+        }
+
+        .nav-button:hover {
+            background-color: #7a3c02;
+        }
+
+        @media (max-width: 768px) {
+            .img-left, .img-right {
+                float: none;
+                display: block;
+                margin: 20px auto;
+                max-width: 100%;
+            }
+            
+            .modal-content {
+                width: 90%;
+                margin: 10% auto;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            h2 {
+                font-size: 1.9rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            body {
+                font-size: 17px; /* Slightly smaller on tablets */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-box {
+                padding: 15px;
+            }
+            
+            .quiz-options {
+                gap: 8px;
+            }
+            
+            .quiz-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .quiz-nav-btn {
+                width: 100%;
+            }
+
+            body {
+                font-size: 16px; /* Slightly smaller on phones */
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-box">
+            <h1>Ancient Indian Metallurgy and Metal Extraction</h1>
+            
+            <img src="metal.jpg" alt="Ancient Indian Metal Artifacts" class="img-center">
+            
+            <p>India has a rich history of metallurgical advancements dating back thousands of years. The subcontinent was known for its expertise in iron, copper, bronze, zinc, gold, and silver metallurgy, influencing global trade and technological development. Indian metallurgists pioneered extraction, alloying, and forging techniques that were far ahead of their time.</p>
+            
+            <h2>Ancient Indian Metallurgy</h2>
+            
+            <h3>Early Metal Usage</h3>
+            <p>The Harappan Civilization (3300–1300 BCE) used copper, bronze, lead, and tin for tools, weapons, and ornaments. Archaeological excavations at sites like Mohenjo-Daro and Harappa reveal well-crafted metal artifacts, indicating a deep understanding of metallurgy. Metallurgical techniques included casting, hammering, and alloying to improve the strength and durability of metal objects.</p>
+            
+            <h3>Iron Metallurgy</h3>
+            <div class="clearfix">
+                <img src="smelt.jpg" alt="Ancient Iron Smelting" class="img-right">
+                <p>India was one of the first regions to develop iron smelting (by 1200 BCE). The Iron Age in India saw the production of high-quality iron tools, which contributed to agricultural and military advancements. Indian blacksmiths perfected techniques to remove impurities and create durable iron objects, helping sustain powerful kingdoms.</p>
+            </div>
+            
+            <h3>Zinc Distillation</h3>
+            <img src="zinc.jpg" alt="Zinc Extraction" class="img-center">
+            <p>Indian metallurgists were the first to develop a zinc extraction process in Zawar, Rajasthan, around the 4th century BCE. Zinc was difficult to extract due to its low boiling point, but Indian techniques involved distillation in closed crucibles, a method unknown to the West until centuries later. This innovation was essential in developing brass, an alloy of copper and zinc, which became widely used in India and the Middle East.</p>
+            
+            <h3>Monolithic Iron Structures</h3>
+            <p>The Iron Pillar of Delhi (4th century CE), made of pure wrought iron, remains rust-free despite being over 1,600 years old. This is due to the high phosphorus content in the iron, which forms a protective layer, preventing corrosion. This advanced understanding of metallurgy showcased India's superior iron processing techniques.</p>
+            
+            <h3>Gold and Silver Refining</h3>
+            <div class="clearfix">
+                <img src="gold.jpg" alt="Ancient Gold Artifacts" class="img-left">
+                <p>Ancient Indian texts like the <em>Arthashastra</em> (4th century BCE) describe gold purification methods using mercury amalgamation. Gold extraction and coin minting were well-developed industries during the Maurya and Gupta periods. Indian jewelers mastered intricate designs and techniques, influencing gold craftsmanship worldwide.</p>
+            </div>
+            
+            <h2>Ancient Indian Metal Extraction & Wootz Steel</h2>
+            
+            <h3>Metal Extraction Techniques</h3>
+            <p>Indian metal extraction methods were based on empirical observations, which later evolved into systematic processes. Some of the most significant extraction techniques included:</p>
+            
+            <ul>
+                <li><strong>Copper Smelting:</strong> India was one of the earliest regions to develop copper extraction. Copper was used extensively for weapons, utensils, and religious artifacts. Evidence from the Khetri mines in Rajasthan suggests copper production as early as 2000 BCE.</li>
+                <li><strong>Iron Extraction and Forging:</strong> Iron ore was reduced using charcoal in bloomery furnaces. The production of iron led to the creation of sophisticated tools and weapons, which strengthened India's trade relations with other civilizations.</li>
+                <li><strong>Zinc Extraction:</strong> Zinc smelting at Zawar in Rajasthan was a revolutionary breakthrough, where the distillation process prevented zinc from vaporizing and escaping, allowing pure metal extraction.</li>
+                <li><strong>Gold Extraction:</strong> Gold was extracted using traditional placer mining and mercury amalgamation techniques. South India, particularly Karnataka, had rich gold deposits that contributed to temple architecture and coinage.</li>
+            </ul>
+            
+            <h2>Wootz Steel: The World's Finest Steel</h2>
+            <img src="wootz.png" alt="Wootz Steel" class="img-center">
+            <p>Wootz steel, an ultra-high carbon steel known for its exceptional sharpness, strength, and flexibility, was produced in India as early as the 6th century BCE. This steel was renowned worldwide and was exported to the Middle East, Europe, and beyond.</p>
+            
+            <h3>Process of Wootz Steel Production</h3>
+            
+            <ol>
+                <li><strong>Iron Ore Selection:</strong> High-purity iron ore was sourced from southern India, especially from Karnataka and Andhra Pradesh. The ore was carefully chosen to ensure minimal impurities and optimal carbon absorption.</li>
+                <li><strong>Crucible Smelting:</strong>
+                    <ul>
+                        <li>Small pieces of iron were mixed with carbon-rich materials like wood, leaves, or charcoal.</li>
+                        <li>This mixture was placed inside high-quality clay crucibles, which were then sealed.</li>
+                        <li>The crucibles were heated in a controlled environment, reaching temperatures of around 1,300°C.</li>
+                    </ul>
+                </li>
+                <li><strong>Slow Cooling:</strong>
+                    <ul>
+                        <li>The molten metal was allowed to cool gradually inside the crucible.</li>
+                        <li>This slow cooling process led to the formation of unique microstructures, including carbon nanotubes, which contributed to the steel's superior properties.</li>
+                        <li>The final ingots had a characteristic "wootz" pattern due to the uniform distribution of carbon.</li>
+                    </ul>
+                </li>
+                <li><strong>Forging into Weapons:</strong>
+                    <ul>
+                        <li>The steel ingots were further refined and forged into weapons such as swords and daggers.</li>
+                        <li>The forging process involved repeated heating, hammering, and cooling to enhance the blade's toughness and sharpness.</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <h3>Impact and Global Influence</h3>
+            
+            <ul>
+                <li><strong>Highly Sought-After Export:</strong> Wootz steel became highly prized by Arab traders, who introduced it to Syria, Persia, and later Europe, where it was used to create legendary Damascus swords.</li>
+                <li><strong>Superior Quality:</strong> The steel was known for its distinctive watered pattern, a result of microstructural carbon distribution, which gave it superior strength and cutting ability.</li>
+                <li><strong>Unmatched Durability:</strong> European metallurgists tried to replicate the technique but failed until modern metallurgy understood its complex composition.</li>
+                <li><strong>Cultural Exchange:</strong> Indian metalworking techniques also influenced Southeast Asian and Chinese metallurgies through trade and cultural exchanges.</li>
+            </ul>
+            
+            <p>Wootz steel remained an unparalleled achievement in metallurgy, demonstrating India's profound knowledge of material science and engineering. This innovation not only contributed to Indian civilization but also left an enduring impact on global weaponry and metalworking traditions.</p>
+            
+            <button class="quiz-btn" id="quizBtn">Guess the Material</button>
+        </div>
+    </div>
+    
+    <a href="page4.html" class="nav-button">Previous Page</a>
+    
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="quiz-title">Guess the Material</h2>
+            <div id="quizContainer">
+                <!-- Quiz content will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Quiz data
+        const quizData = [
+            {
+                image: "iron-pillar.jpeg",
+                name: "Iron Pillar of Delhi",
+                correct: "Wrought Iron",
+                wrong: ["Bronze", "Copper", "Zinc"]
+            },
+            {
+                image: "nat.jpg",
+                name: "Nataraja Bronze Statue (Chola Dynasty, Tamil Nadu)",
+                correct: "Bronze",
+                wrong: ["Gold", "Zinc", "Lead"]
+            },
+            {
+                image: "maur.jpeg",
+                name: "Mauryan Gold Coins (Gupta Dynasty, 4th Century CE)",
+                correct: "Gold",
+                wrong: ["Silver", "Brass", "Iron"]
+            },
+            {
+                image: "dancing.jpg",
+                name: "Dancing Girl of Mohenjo Daro",
+                correct: "Bronze (Lost-Wax Casting)",
+                wrong: ["Zinc", "Aluminum", "Lead"]
+            },
+            {
+                image: "sword.jpg",
+                name: "The Sword of Tipu Sultan",
+                correct: "Wootz Steel",
+                wrong: ["Bronze", "Aluminium", "Zinc"]
+            }
+        ];
+        
+        // Quiz variables
+        let currentQuestion = 0;
+        let score = 0;
+        
+        // DOM elements
+        const quizModal = document.getElementById("quizModal");
+        const quizBtn = document.getElementById("quizBtn");
+        const closeBtn = document.querySelector(".close");
+        const quizContainer = document.getElementById("quizContainer");
+        
+        // Open modal when quiz button is clicked
+        quizBtn.addEventListener("click", function() {
+            currentQuestion = 0;
+            showQuestion();
+            quizModal.style.display = "block";
+        });
+        
+        // Close modal when X is clicked
+        closeBtn.addEventListener("click", function() {
+            quizModal.style.display = "none";
+        });
+        
+        // Close modal when clicking outside of it
+        window.addEventListener("click", function(event) {
+            if (event.target == quizModal) {
+                quizModal.style.display = "none";
+            }
+        });
+        
+        // Function to display current question
+        function showQuestion() {
+            const question = quizData[currentQuestion];
+            
+            // Shuffle options
+            const options = [...question.wrong, question.correct];
+            shuffleArray(options);
+            
+            // Create HTML for the question
+            let html = `
+                <div class="item-name" id="itemName">${question.name}</div>
+                <img src="${question.image}" alt="Quiz Image" class="quiz-image">
+                <div class="quiz-options" id="quizOptions">
+            `;
+            
+            // Add options
+            options.forEach(option => {
+                html += `<div class="quiz-option" onclick="checkAnswer('${option}', '${question.correct}')">${option}</div>`;
+            });
+            
+            html += `</div><div class="quiz-nav">`;
+            
+            // Add previous button if not first question
+            if (currentQuestion > 0) {
+                html += `<button class="quiz-nav-btn" onclick="prevQuestion()">Previous</button>`;
+            } else {
+                html += `<button class="quiz-nav-btn" disabled>Previous</button>`;
+            }
+            
+            // Add next button if not last question
+            if (currentQuestion < quizData.length - 1) {
+                html += `<button class="quiz-nav-btn" onclick="nextQuestion()">Next</button>`;
+            } else {
+                html += `<button class="quiz-nav-btn" onclick="endQuiz()">Finish</button>`;
+            }
+            
+            html += `</div>`;
+            
+            quizContainer.innerHTML = html;
+            document.getElementById("itemName").style.display = "none";
+        }
+        
+        // Function to check answer
+        function checkAnswer(selectedOption, correctAnswer) {
+            const options = document.querySelectorAll(".quiz-option");
+            const itemName = document.getElementById("itemName");
+            
+            // Show the item name
+            itemName.style.display = "block";
+            
+            // Check each option
+            options.forEach(option => {
+                option.onclick = null; // Disable further clicks
+                
+                if (option.textContent === correctAnswer) {
+                    option.classList.add("correct");
+                } else if (option.textContent === selectedOption && selectedOption !== correctAnswer) {
+                    option.classList.add("incorrect");
+                }
+            });
+        }
+        
+        // Function to go to next question
+        function nextQuestion() {
+            currentQuestion++;
+            showQuestion();
+        }
+        
+        // Function to go to previous question
+        function prevQuestion() {
+            currentQuestion--;
+            showQuestion();
+        }
+        
+        // Function to end quiz
+        function endQuiz() {
+            quizModal.style.display = "none";
+            
+        }
+        
+        // Utility function to shuffle array
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+    </script>
+</body>
+</html>
