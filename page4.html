@@ -154,10 +154,12 @@
         
         .modal-content {
             background-color: #f4f4f4;
-            margin: 10% auto;
+            margin: 5% auto;
             padding: 30px;
             width: 80%;
             max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             position: relative;
@@ -192,36 +194,24 @@
             transition: all 0.3s;
         }
         
-        .quiz-option {
-        display: block;
-        margin: 10px 0;
-        padding: 12px;
-        background-color: #ddd;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-    
-    /* Remove the hover effect */
-    /* .quiz-option:hover {
-        background-color: #ccc;
-    } */
-    
-    .correct {
-        background-color: #4CAF50;
-        color: white;
-    }
-    
-    .incorrect {
-        background-color: #f44336;
-        color: white;
-    }
-    
+        .correct {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .incorrect {
+            background-color: #f44336;
+            color: white;
+        }
         
         .quiz-navigation {
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
+            position: sticky;
+            bottom: 0;
+            background-color: #f4f4f4;
+            padding: 10px 0;
         }
         
         .quiz-nav-btn {
@@ -243,6 +233,10 @@
             text-align: center;
             margin-top: 20px;
             font-weight: bold;
+        }
+        
+        #questionContainer {
+            padding-bottom: 20px;
         }
         
         /* Responsive Design */
@@ -271,7 +265,8 @@
             
             .modal-content {
                 width: 90%;
-                margin: 20% auto;
+                margin: 10% auto;
+                max-height: 85vh;
             }
         }
         
@@ -299,6 +294,11 @@
             .quiz-btn, .nav-btn {
                 padding: 10px 15px;
                 font-size: 1rem;
+            }
+            
+            .modal-content {
+                padding: 20px;
+                max-height: 90vh;
             }
         }
     </style>
